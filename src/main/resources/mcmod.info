@@ -1,0 +1,16 @@
+[
+{
+  "modid": "neptunia",
+  "name": "Neptunia Craft",
+  "description": "Nepnepnep!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Neptune"],
+  "credits": "NEPNEP!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
