@@ -9,18 +9,18 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
 import norg.neptunia.capability.NeptuniaCapability;
 import norg.neptunia.gui.GuiPlayerStatue;
-import norg.neptunia.gui.GuiSelectCharactor;
-import norg.neptunia.network.MessageOpenSC;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -75,10 +75,12 @@ public class EventHandler {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void keyListener(InputEvent.KeyInputEvent event) {
         if (keyShowSC.isPressed()) {
-            CommonProxy.network.sendToServer(new MessageOpenSC());
+            EntityPlayer player = Minecraft.getMinecraft().player;
+            player.openGui(NeptuniaCraft.instance, GuiID.GUI_SELECTCHARACTER, player.world, (int)player.posX, (int)player.posY, (int)player.posZ);
         }
     }
 

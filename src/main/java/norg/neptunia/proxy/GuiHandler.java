@@ -5,6 +5,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.gui.GuiCharacterInfo;
+import norg.neptunia.gui.GuiSelectCharactor;
 import norg.neptunia.inventory.ContainerCharacterInfo;
 
 /**
@@ -27,10 +28,10 @@ public class GuiHandler implements IGuiHandler {
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         if (ID == GuiID.GUI_INVEXT) {
             return new GuiCharacterInfo(player, player.inventory, CapProvider.get(player).getInventory(CapProvider.get(player).getStatue()));
-        //} else if (ID == GuiID.GUI_BELIEF) {
-            //return new GuiBeliefProvider(player, player.inventory, (IInventory) world.getTileEntity(new BlockPos(x, y, z)));
+        } else if (ID == GuiID.GUI_SELECTCHARACTER) {
+            return new GuiSelectCharactor(player);
         } else {
-                return null;
+            return null;
         }
     }
 }

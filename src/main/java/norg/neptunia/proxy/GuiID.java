@@ -5,6 +5,5 @@ package norg.neptunia.proxy;
  */
 public class GuiID {
     public static final int GUI_INVEXT = 1;
-    public static final int GUI_BELIEF = 2;
-    public static final int GUI_DISC = 3;
+    public static final int GUI_SELECTCHARACTER = 2;
 }

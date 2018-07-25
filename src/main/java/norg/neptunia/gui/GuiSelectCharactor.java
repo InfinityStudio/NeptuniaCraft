@@ -5,11 +5,12 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
 import norg.neptunia.capability.ListCharactor.*;
-import norg.neptunia.network.MessageOpenGui;
-import norg.neptunia.proxy.CommonProxy;
 import norg.neptunia.proxy.GuiID;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.Iterator;
 /**
  * Created by The Sea on 2016/4/13.
  */
+@SideOnly(Side.CLIENT)
 public class GuiSelectCharactor extends GuiScreen {
 
     private EntityPlayer player;
@@ -35,6 +37,8 @@ public class GuiSelectCharactor extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        GlStateManager.color(1, 1, 1, 1);
         this.mc.getTextureManager().bindTexture(guiSelChar);
         int i = (this.width - 246) / 2;
         int j = (this.height - 222) / 2;
@@ -46,8 +50,8 @@ public class GuiSelectCharactor extends GuiScreen {
         while (iterator.hasNext()) {
             Information chara = iterator.next();
             if (chara.getName().equals(pc.getStatue())) { b = true; }
-            this.mc.getTextureManager().bindTexture(chara.getResourceLocation());
             GlStateManager.color(1, 1, 1, 1);
+            this.mc.getTextureManager().bindTexture(chara.getResourceLocation());
             switch (k) {
                 case 1: draw1(i, j, b, chara, pc); break;
                 case 2: draw2(i, j, b, chara, pc); break;
@@ -59,9 +63,8 @@ public class GuiSelectCharactor extends GuiScreen {
                 case 8: draw8(i, j, b, chara, pc); break;
             }
             b = false;
-            k += 1;
+            k++;
         }
-        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
@@ -109,7 +112,7 @@ public class GuiSelectCharactor extends GuiScreen {
             }
         } catch (Exception event) { }
         if (mouseX <= i + 246 && mouseX >= i + 227 && mouseY <= j + 42 && mouseY >= j + 23 && mouseButton ==0) {
-            CommonProxy.network.sendToServer(new MessageOpenGui(GuiID.GUI_INVEXT));
+            this.player.openGui(NeptuniaCraft.instance, GuiID.GUI_INVEXT, player.world, (int)player.posX, (int)player.posY, (int)player.posZ);
         }
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
@@ -122,7 +125,7 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 20, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 30, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 40, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 39, j + 50, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 50, 4210752);
     }
 
     private void draw2(int i, int j, boolean b, Information chara, INepCapability pc) {
@@ -133,7 +136,7 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 20, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 30, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 40, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 150, j + 50, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 50, 4210752);
     }
 
     private void draw3(int i, int j, boolean b, Information chara, INepCapability pc) {
@@ -144,7 +147,7 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 74, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 84, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 94, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 39, j + 104, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 104, 4210752);
     }
 
     private void draw4(int i, int j, boolean b, Information chara, INepCapability pc) {
@@ -155,7 +158,7 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 74, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 84, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 94, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 150, j + 104, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 104, 4210752);
     }
 
     private void draw5(int i, int j, boolean b, Information chara, INepCapability pc) {
@@ -166,7 +169,7 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 128, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 138, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 148, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 39, j + 158, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 158, 4210752);
     }
 
     private void draw6(int i, int j, boolean b, Information chara, INepCapability pc) {
@@ -177,7 +180,7 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 128, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 138, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 148, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 150, j + 158, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 158, 4210752);
     }
 
     private void draw7(int i, int j, boolean b, Information chara, INepCapability pc) {
@@ -188,7 +191,7 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 182, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 192, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 202, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 39, j + 212, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 212, 4210752);
     }
 
     private void draw8(int i, int j, boolean b, Information chara, INepCapability pc) {
@@ -199,6 +202,6 @@ public class GuiSelectCharactor extends GuiScreen {
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 182, 4210752);
         fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 192, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 202, 4210752);
-        fontRenderer.drawString("ExEDrive" + pc.getExEDriver(chara.getName()), i + 150, j + 212, 4210752);
+        fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 212, 4210752);
     }
 }

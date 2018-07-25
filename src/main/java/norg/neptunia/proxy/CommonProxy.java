@@ -6,15 +6,12 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.block.BlockLoader;
 import norg.neptunia.capability.INepCapability;
 import norg.neptunia.capability.NeptuniaCapability;
 import norg.neptunia.item.ItemLoader;
-import norg.neptunia.network.MessageOpenGui;
-import norg.neptunia.network.MessageOpenSC;
 import norg.neptunia.network.MessageUpdateCap;
 
 /**
@@ -42,7 +39,5 @@ public class CommonProxy {
         int messageCount = 0;
         network = NetworkRegistry.INSTANCE.newSimpleChannel("neptunia_messenger");
         network.registerMessage(MessageUpdateCap.UpdateCapsHandler.class, MessageUpdateCap.class, messageCount++, Side.CLIENT);
-        network.registerMessage(MessageOpenSC.OpenSCHandler.class, MessageOpenSC.class, messageCount++, Side.SERVER);
-        network.registerMessage(MessageOpenGui.OpenGuiHandler.class, MessageOpenGui.class, messageCount++, Side.SERVER);
     }
 }

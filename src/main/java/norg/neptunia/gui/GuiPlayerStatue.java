@@ -44,12 +44,12 @@ public class GuiPlayerStatue extends Gui{
         FontRenderer fontRenderer = mc.fontRenderer;
         String tmp = (int)i + "/" + (int)j;
         fontRenderer.drawString(tmp, 122-tmp.length()*4, 17, 0xFFFFFF);
-        fontRenderer.drawString("HP", 46, 16, 0xFFFFFF);
+        fontRenderer.drawString("HP", 46, 16, 4210752);
         tmp = pc.getSuperPower(pc.getStatue()) + "/" + pc.getMaxSP(pc.getStatue());
         fontRenderer.drawString(tmp, 122-tmp.length()*4, 29 ,0xFFFFFF);
-        fontRenderer.drawString("SP", 46, 28, 0xFFFFFF);
-        fontRenderer.drawString(pc.getStatue(), 48, 4, 0xFFFFFF);
-        fontRenderer.drawString(Integer.toString(pc.getEXELevel(pc.getStatue())), 22, 41, 0xFFFFFF);
+        fontRenderer.drawString("SP", 46, 28, 4210752);
+        fontRenderer.drawString(pc.getStatue(), 48, 4, 4210752);
+        fontRenderer.drawString(Integer.toString(pc.getEXELevel(pc.getStatue())), 22, 41, 4210752);
         mc.getTextureManager().bindTexture(Gui.ICONS);
     }
 

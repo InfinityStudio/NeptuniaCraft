@@ -1,18 +1,20 @@
 package norg.neptunia.gui;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
 import norg.neptunia.capability.ListCharactor;
 import norg.neptunia.inventory.ContainerCharacterInfo;
 import norg.neptunia.inventory.InventoryExtended;
-import norg.neptunia.network.MessageOpenSC;
-import norg.neptunia.proxy.CommonProxy;
+import norg.neptunia.proxy.GuiID;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -20,6 +22,7 @@ import java.util.Iterator;
 /**
  * Created by The Sea on 2016/4/18.
  */
+@SideOnly(Side.CLIENT)
 public class GuiCharacterInfo extends GuiContainer {
 
     private final ResourceLocation guiCharaInfo = new ResourceLocation("neptunia", "textures/gui/charactor_info.png");
@@ -40,9 +43,16 @@ public class GuiCharacterInfo extends GuiContainer {
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        this.renderHoveredToolTip(mouseX, mouseY);
+    }
+
+    @Override
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         this.fontRenderer.drawString("HP", 49, 11, 4210752);
-        this.fontRenderer.drawString(player.getHealth() + "/" + player.getMaxHealth(), 152, 11, 4210752);
+        this.fontRenderer.drawString((int)player.getHealth() + "/" + (int)player.getMaxHealth(), 152, 11, 4210752);
         this.fontRenderer.drawString("SP", 49, 35, 4210752);
         INepCapability pc = CapProvider.get(player);
         this.fontRenderer.drawString(pc.getSuperPower(pc.getStatue()) + "/" + pc.getMaxSP(pc.getStatue()), 152, 35, 4210752);
@@ -51,7 +61,7 @@ public class GuiCharacterInfo extends GuiContainer {
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(guiCharaInfo);
         this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
@@ -72,7 +82,7 @@ public class GuiCharacterInfo extends GuiContainer {
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         if (mouseX <= guiLeft + 246 && mouseX >= guiLeft + 227 && mouseY <= guiTop + 21 && mouseY >= guiTop + 2 && mouseButton == 0) {
-            CommonProxy.network.sendToServer(new MessageOpenSC());
+            player.openGui(NeptuniaCraft.instance, GuiID.GUI_SELECTCHARACTER, player.world, (int)player.posX, (int)player.posY, (int)player.posZ);
         } else {
             super.mouseClicked(mouseX, mouseY, mouseButton);
         }

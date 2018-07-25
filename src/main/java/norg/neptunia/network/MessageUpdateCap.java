@@ -41,8 +41,6 @@ public class MessageUpdateCap implements IMessage {
             mainThread.addScheduledTask(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println(String.format("%s received update from server", Minecraft.getMinecraft().player.getName()));
-                    System.out.println("running on client");
                     CapProvider.get(Minecraft.getMinecraft().player).loadNBTData(message.props);
                 }
             });
