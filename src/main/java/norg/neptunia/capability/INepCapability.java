@@ -21,6 +21,7 @@ public interface INepCapability {
     int getMaxSP(String statue);
     int getMaxExEDriver(String statue);
     int getExp(String statue);
+    int getEXELevel(String statue);
     Item getWeapon(String statue);
     void setSuperPower(String statue, int sp);
     void setExEDriver(String statue, int exe);
@@ -28,6 +29,6 @@ public interface INepCapability {
     void setExp(String statue, int exp);
     void setMaxSP(String statue, int maxSP);
     void setMaxEXE(String statue, int maxEXE);
-    void setBelief(int belief);
+    void setEXELevel(String statue, int exeLevel);
     InventoryExtended getInventory(String statue);
 }

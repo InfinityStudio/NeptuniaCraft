@@ -5,7 +5,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
-import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
 import norg.neptunia.capability.ListCharactor.*;
@@ -25,26 +24,33 @@ public class GuiPlayerStatue extends Gui{
         GlStateManager.enableAlpha();
         Minecraft mc = Minecraft.getMinecraft();
         mc.getTextureManager().bindTexture(guiStatue);
-        this.drawTexturedModalRect(0, 0, 0, 0, 116, 43);
+        this.drawTexturedModalRect(0, 0, 0, 0, 125, 49);
         float i = mc.player.getHealth();
         float j = mc.player.getMaxHealth();
-        this.drawTexturedModalRect(41, 2, 0, 43, (int)(72 * i / j), 10);
+        this.drawTexturedModalRect(55, 17, 0, 49, (int)(68 * i / j), 6);
         INepCapability pc = CapProvider.get(mc.player);
-        this.drawTexturedModalRect(41, 14, 0, 53, (70 * pc.getSuperPower(pc.getStatue()) / 1000), 10);
+        this.drawTexturedModalRect(55, 29, 0, 55, (68 * pc.getSuperPower(pc.getStatue()) / pc.getMaxSP(pc.getStatue())), 6);
+        int exeAccess = 40*pc.getExEDriver(pc.getStatue())/pc.getMaxExEDriver(pc.getStatue());
+        this.drawTexturedModalRect(1, 41-exeAccess, 0, 61, 3, exeAccess);
         Iterator<Information> iterator = pc.getListCharactor().charactorList.iterator();
         while (iterator.hasNext()) {
             Information chara = iterator.next();
             if (chara.getName().equals(pc.getStatue())) {
                 mc.getTextureManager().bindTexture(chara.getResourceLocation());
-                this.drawTexturedModalRect(3, 3, 0, 0, 35, 36);
+                this.drawTexturedModalRect(7, 3, 0, 0, 35, 36);
                 break;
             }
         }
         FontRenderer fontRenderer = mc.fontRenderer;
-        fontRenderer.drawString((int)i + "/" + (int)j, 117, 3, 0xFFFFFF);
-        fontRenderer.drawString(pc.getSuperPower(pc.getStatue()) + "/" + pc.getMaxSP(pc.getStatue()), 115, 15 ,0xFFFFFF);
-        fontRenderer.drawString("statue:" + CapProvider.get(mc.player).getStatue(), 42, 27, 0xFFFFFF);
-        //mc.getTextureManager().bindTexture(icons);
+        String tmp = (int)i + "/" + (int)j;
+        fontRenderer.drawString(tmp, 122-tmp.length()*4, 17, 0xFFFFFF);
+        fontRenderer.drawString("HP", 46, 16, 0xFFFFFF);
+        tmp = pc.getSuperPower(pc.getStatue()) + "/" + pc.getMaxSP(pc.getStatue());
+        fontRenderer.drawString(tmp, 122-tmp.length()*4, 29 ,0xFFFFFF);
+        fontRenderer.drawString("SP", 46, 28, 0xFFFFFF);
+        fontRenderer.drawString(pc.getStatue(), 48, 4, 0xFFFFFF);
+        fontRenderer.drawString(Integer.toString(pc.getEXELevel(pc.getStatue())), 22, 41, 0xFFFFFF);
+        mc.getTextureManager().bindTexture(Gui.ICONS);
     }
 
 }

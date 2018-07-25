@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ListCharactor {
 
     public static class Information {
-        int superPower, exeDriver, exp, level, maxSP, maxDriver;
+        int superPower, exeDriver, exp, level, maxSP, maxDriver, exeLevel;
         boolean HDD;
         String name, nation;
         ResourceLocation resourceLocation;
@@ -27,6 +27,7 @@ public class ListCharactor {
             this.exeDriver = 0;
             this.exp = 0;
             this.level = 1;
+            this.exeLevel = 0;
             this.maxDriver = 1000;
             this.maxSP = 1000;
             this.HDD = false;
@@ -58,6 +59,8 @@ public class ListCharactor {
         public int getMaxDriver() {
             return this.maxDriver;
         }
+
+        public int getExeLevel() { return this.exeLevel; }
 
         public boolean getHDD() {
             return this.HDD;
@@ -98,6 +101,8 @@ public class ListCharactor {
         public void setMaxDriver(int maxDriver) {
             this.maxDriver = maxDriver;
         }
+
+        public void setExeLevel(int exeLevel) { this.exeLevel = exeLevel; }
 
         public void setHDD(boolean HDD) {
             this.HDD = HDD;

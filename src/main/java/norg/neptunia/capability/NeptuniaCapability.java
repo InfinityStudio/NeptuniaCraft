@@ -20,10 +20,6 @@ public class NeptuniaCapability implements INepCapability {
 
     protected String statue = "Neptune";
     protected int belief = 0;
-    protected double planeptuneBelief = 0.25;
-    protected double lastationBelief = 0.25;
-    protected double loweeBelief = 0.25;
-    protected double leanboxBelief = 0.25;
     protected ListCharactor listCharactor = new ListCharactor();
 
     public NeptuniaCapability() { }
@@ -67,7 +63,6 @@ public class NeptuniaCapability implements INepCapability {
         public NBTBase writeNBT(Capability<INepCapability> capability, INepCapability instance, EnumFacing side) {
             NBTTagCompound compound = new NBTTagCompound();
             compound.setString("Statue", instance.getStatue());
-            System.out.println("Statue" + instance.getStatue());
             Iterator<ListCharactor.Information> iterator = instance.getListCharactor().charactorList.iterator();
             while (iterator.hasNext()) {
                 ListCharactor.Information chara = iterator.next();
@@ -78,6 +73,7 @@ public class NeptuniaCapability implements INepCapability {
                 props.setInteger("MaxExE", chara.getMaxDriver());
                 props.setInteger("Level", chara.getLevel());
                 props.setInteger("Exp", chara.getExp());
+                props.setInteger("ExELevel", chara.getExeLevel());
                 //props = chara.getInventory().writeToNBT(compound, chara);
                 compound.setTag(chara.getName(), props);
             }
@@ -88,8 +84,6 @@ public class NeptuniaCapability implements INepCapability {
         public void readNBT(Capability<INepCapability> capability, INepCapability instance, EnumFacing side, NBTBase nbt) {
             NBTTagCompound compound = (NBTTagCompound) nbt;
             instance.setStatue(compound.getString("Statue"));
-            instance.setBelief(compound.getInteger("Belief"));
-            System.out.println("Statue_Read:" + compound.getString("Statue"));
             for (int i = 0; i < instance.getListCharactor().charactorList.size(); i++) {
                 String name = instance.getListCharactor().charactorList.get(i).getName();
                 NBTTagCompound props = compound.getCompoundTag(name);
@@ -99,7 +93,8 @@ public class NeptuniaCapability implements INepCapability {
                 instance.setExp(name, props.getInteger("Exp"));
                 instance.setMaxSP(name, props.getInteger("MaxSP"));
                 instance.setMaxEXE(name, props.getInteger("MaxExE"));
-                instance.getInventory(name).readFromNBT(compound, instance.getListCharactor().charactorList.get(i));
+                instance.setEXELevel(name, props.getInteger("ExELevel"));
+                //instance.getInventory(name).readFromNBT(compound, instance.getListCharactor().charactorList.get(i));
             }
         }
     }
@@ -160,6 +155,16 @@ public class NeptuniaCapability implements INepCapability {
         while (iterator.hasNext()) {
             ListCharactor.Information chara = iterator.next();
             if (chara.getName().equals(statue)) return chara.getExp();
+        }
+        return 0;
+    }
+
+    @Override
+    public int getEXELevel(String statue) {
+        Iterator<ListCharactor.Information> iterator = listCharactor.charactorList.iterator();
+        while (iterator.hasNext()) {
+            ListCharactor.Information chara = iterator.next();
+            if (chara.getName().equals(statue)) return chara.getExeLevel();
         }
         return 0;
     }
@@ -229,8 +234,12 @@ public class NeptuniaCapability implements INepCapability {
     }
 
     @Override
-    public void setBelief(int belief) {
-        this.belief = belief;
+    public void setEXELevel(String statue, int exeLevel) {
+        for (int i = 0; i < listCharactor.charactorList.size(); i++) {
+            if (listCharactor.charactorList.get(i).getName().equals(statue)) {
+                listCharactor.charactorList.get(i).setExeLevel(exeLevel);
+            }
+        }
     }
 
     @Override

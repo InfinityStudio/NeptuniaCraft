@@ -58,6 +58,24 @@ public class EventHandler {
     }
 
     @SubscribeEvent
+    public void increaseEXE(AttackEntityEvent event) {
+        if (!event.getEntityPlayer().getEntityWorld().isRemote) {
+            INepCapability pc = CapProvider.get(event.getEntityPlayer());
+            int curEXE = pc.getExEDriver(pc.getStatue())+1;
+            if (curEXE > pc.getMaxExEDriver(pc.getStatue())) {
+                if (pc.getEXELevel(pc.getStatue()) < 5) {
+                    curEXE = 0;
+                    pc.setEXELevel(pc.getStatue(), pc.getEXELevel(pc.getStatue()) + 1);
+                } else {
+                    curEXE = pc.getMaxExEDriver(pc.getStatue());
+                }
+            }
+            pc.setExEDriver(pc.getStatue(), curEXE);
+            pc.dataChanged(event.getEntityPlayer());
+        }
+    }
+
+    @SubscribeEvent
     public void keyListener(InputEvent.KeyInputEvent event) {
         if (keyShowSC.isPressed()) {
             CommonProxy.network.sendToServer(new MessageOpenSC());
