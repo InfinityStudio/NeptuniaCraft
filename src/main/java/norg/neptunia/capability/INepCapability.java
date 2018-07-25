@@ -14,6 +14,7 @@ public interface INepCapability {
     NBTTagCompound saveNBTData();
     void loadNBTData(NBTTagCompound compound);
     void dataChanged(EntityPlayer player);
+
     ListCharactor getListCharactor();
     int getSuperPower(String statue);
     int getExEDriver(String statue);
@@ -30,5 +31,7 @@ public interface INepCapability {
     void setMaxSP(String statue, int maxSP);
     void setMaxEXE(String statue, int maxEXE);
     void setEXELevel(String statue, int exeLevel);
-    InventoryExtended getInventory(String statue);
+    InventoryExtended getInventory(String statue);;
+
+    void updateLevel(String statue);
 }

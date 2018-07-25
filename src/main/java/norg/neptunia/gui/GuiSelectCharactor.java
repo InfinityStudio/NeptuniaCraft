@@ -123,7 +123,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 39, j + 10, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 20, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 30, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 39, j + 30, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 40, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 50, 4210752);
     }
@@ -134,7 +134,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 150, j + 10, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 20, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 30, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 150, j + 30, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 40, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 50, 4210752);
     }
@@ -145,7 +145,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 39, j + 64, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 74, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 84, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 39, j + 84, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 94, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 104, 4210752);
     }
@@ -156,7 +156,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 150, j + 64, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 74, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 84, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 150, j + 84, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 94, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 104, 4210752);
     }
@@ -167,7 +167,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 39, j + 118, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 128, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 138, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 39, j + 138, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 148, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 158, 4210752);
     }
@@ -178,7 +178,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 150, j + 118, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 128, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 138, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 150, j + 138, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 148, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 158, 4210752);
     }
@@ -189,7 +189,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 39, j + 172, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 39, j + 182, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 39, j + 192, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 39, j + 192, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 39, j + 202, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 39, j + 212, 4210752);
     }
@@ -200,7 +200,7 @@ public class GuiSelectCharactor extends GuiScreen {
         FontRenderer fontRenderer = this.mc.fontRenderer;
         fontRenderer.drawString(chara.getName(), i + 150, j + 172, 4210752);
         fontRenderer.drawString("Lv:" + pc.getLevel(chara.getName()), i + 150, j + 182, 4210752);
-        fontRenderer.drawString("Exp:" + pc.getLevel(chara.getName()), i + 150, j + 192, 4210752);
+        fontRenderer.drawString("Level:" + pc.getLevel(chara.getName()), i + 150, j + 192, 4210752);
         fontRenderer.drawString("SuperPower:" + pc.getSuperPower(chara.getName()), i + 150, j + 202, 4210752);
         fontRenderer.drawString("ExEDrive:" + pc.getExEDriver(chara.getName()), i + 150, j + 212, 4210752);
     }

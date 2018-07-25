@@ -10,8 +10,10 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -61,7 +63,7 @@ public class EventHandler {
     public void increaseEXE(AttackEntityEvent event) {
         if (!event.getEntityPlayer().getEntityWorld().isRemote) {
             INepCapability pc = CapProvider.get(event.getEntityPlayer());
-            int curEXE = pc.getExEDriver(pc.getStatue())+1;
+            int curEXE = pc.getExEDriver(pc.getStatue()) + 1;
             if (curEXE > pc.getMaxExEDriver(pc.getStatue())) {
                 if (pc.getEXELevel(pc.getStatue()) < 5) {
                     curEXE = 0;
@@ -73,6 +75,14 @@ public class EventHandler {
             pc.setExEDriver(pc.getStatue(), curEXE);
             pc.dataChanged(event.getEntityPlayer());
         }
+    }
+
+    @SubscribeEvent
+    public void getExp(LivingExperienceDropEvent event) {
+        INepCapability pc = CapProvider.get(event.getAttackingPlayer());
+        pc.setExp(pc.getStatue(), pc.getExp(pc.getStatue())+event.getDroppedExperience());
+        pc.updateLevel(pc.getStatue());
+        pc.dataChanged(event.getAttackingPlayer());
     }
 
     @SideOnly(Side.CLIENT)

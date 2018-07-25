@@ -50,6 +50,7 @@ public class GuiPlayerStatue extends Gui{
         fontRenderer.drawString("SP", 46, 28, 4210752);
         fontRenderer.drawString(pc.getStatue(), 48, 4, 4210752);
         fontRenderer.drawString(Integer.toString(pc.getEXELevel(pc.getStatue())), 22, 41, 4210752);
+        fontRenderer.drawString("Lv."+pc.getLevel(pc.getStatue()), 47, 38, 0xFFFFFF);
         mc.getTextureManager().bindTexture(Gui.ICONS);
     }
 

@@ -16,6 +16,7 @@ public class BlockContainerBasic extends BlockContainer {
     protected BlockContainerBasic(String name) {
         super(Material.ROCK);
         setUnlocalizedName(name);
+        setRegistryName(name);
         setCreativeTab(NeptuniaCraft.nepTabs);
         this.blockName = name;
     }

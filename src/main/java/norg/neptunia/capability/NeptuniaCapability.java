@@ -99,6 +99,8 @@ public class NeptuniaCapability implements INepCapability {
         }
     }
 
+
+
     @Override
     public int getSuperPower(String statue) {
         Iterator<ListCharactor.Information> iterator = listCharactor.charactorList.iterator();
@@ -182,7 +184,7 @@ public class NeptuniaCapability implements INepCapability {
     @Override
     public void setSuperPower(String statue, int sp) {
         for (int i = 0; i < listCharactor.charactorList.size(); i++) {
-            if (listCharactor.charactorList.get(i).getName().equals(statue) && sp < listCharactor.charactorList.get(i).getMaxSP()) {
+            if (listCharactor.charactorList.get(i).getName().equals(statue) && sp <= listCharactor.charactorList.get(i).getMaxSP()) {
                 listCharactor.charactorList.get(i).setSuperPower(sp);
             }
         }
@@ -191,7 +193,7 @@ public class NeptuniaCapability implements INepCapability {
     @Override
     public void setExEDriver(String statue, int exe) {
         for (int i = 0; i < listCharactor.charactorList.size(); i++) {
-            if (listCharactor.charactorList.get(i).getName().equals(statue) && exe < listCharactor.charactorList.get(i).getMaxDriver()) {
+            if (listCharactor.charactorList.get(i).getName().equals(statue) && exe <= listCharactor.charactorList.get(i).getMaxDriver()) {
                 listCharactor.charactorList.get(i).setExeDriver(exe);
             }
         }
@@ -250,5 +252,21 @@ public class NeptuniaCapability implements INepCapability {
             if (chara.getName().equals(statue)) return chara.getInventory();
         }
         return null;
+    }
+
+
+    @Override
+    public void updateLevel(String statue) {
+        Iterator<ListCharactor.Information> iterator = listCharactor.charactorList.iterator();
+        while (iterator.hasNext()) {
+            ListCharactor.Information chara = iterator.next();
+            if (chara.getName().equals(statue)) {
+                int needExp = (int)Math.pow(2, chara.getLevel()/10)*100;
+                while (chara.getExp() >= needExp && chara.getLevel() < 100) {
+                    chara.setExp(chara.getExp()-needExp);
+                    chara.setLevel(chara.getLevel()+1);
+                }
+            }
+        }
     }
 }
