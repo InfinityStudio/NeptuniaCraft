@@ -14,6 +14,7 @@ public interface INepCapability {
     NBTTagCompound saveNBTData(EntityPlayer player);
     void loadNBTData(NBTTagCompound compound, EntityPlayer player);
     void dataChanged(EntityPlayer player);
+    void syncChanged(EntityPlayer player);
 
     ListCharacter getListCharacter();
     int getSuperPower(String statue);

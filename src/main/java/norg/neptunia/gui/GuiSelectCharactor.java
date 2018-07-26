@@ -80,35 +80,35 @@ public class GuiSelectCharactor extends GuiScreen {
         try {
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 40 && mouseY >= j + 13 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(0).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 40 && mouseY >= j + 13 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(1).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 94 && mouseY >= j + 67 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(2).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 94 && mouseY >= j + 67 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(3).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 148 && mouseY >= j + 121 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(4).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 148 && mouseY >= j + 121 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(5).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 202 && mouseY >= j + 175 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(6).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 202 && mouseY >= j + 175 && mouseButton == 0) {
                 ps.setStatue(ps.getListCharacter().characterList.get(7).getName());
-                ps.dataChanged(this.player);
+                ps.syncChanged(this.player);
             }
         } catch (Exception event) { }
         if (mouseX <= i + 246 && mouseX >= i + 227 && mouseY <= j + 42 && mouseY >= j + 23 && mouseButton ==0) {

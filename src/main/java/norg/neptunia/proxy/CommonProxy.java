@@ -13,6 +13,7 @@ import norg.neptunia.block.BlockLoader;
 import norg.neptunia.capability.INepCapability;
 import norg.neptunia.capability.NeptuniaCapability;
 import norg.neptunia.item.ItemLoader;
+import norg.neptunia.network.MessageSyncCap;
 import norg.neptunia.network.MessageUpdateCap;
 
 /**
@@ -41,5 +42,6 @@ public class CommonProxy {
         int messageCount = 0;
         network = NetworkRegistry.INSTANCE.newSimpleChannel("neptunia");
         network.registerMessage(MessageUpdateCap.UpdateCapsHandler.class, MessageUpdateCap.class, messageCount++, Side.CLIENT);
+        network.registerMessage(MessageSyncCap.SyncCapsHandler.class, MessageSyncCap.class, messageCount++, Side.SERVER);
     }
 }

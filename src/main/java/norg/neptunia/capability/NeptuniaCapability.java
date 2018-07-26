@@ -8,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import norg.neptunia.inventory.InventoryExtended;
+import norg.neptunia.network.MessageSyncCap;
 import norg.neptunia.network.MessageUpdateCap;
 import norg.neptunia.proxy.CommonProxy;
 
@@ -50,6 +51,13 @@ public class NeptuniaCapability implements INepCapability {
     public void dataChanged(EntityPlayer player) {
         if(player != null){
             CommonProxy.network.sendTo(new MessageUpdateCap(saveNBTData(player)), (EntityPlayerMP) player);
+        }
+    }
+
+    @Override
+    public void syncChanged(EntityPlayer player) {
+        if (player != null) {
+            CommonProxy.network.sendToServer(new MessageSyncCap(saveNBTData(player)));
         }
     }
 
