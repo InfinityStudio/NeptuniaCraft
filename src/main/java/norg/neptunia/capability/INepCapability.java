@@ -2,8 +2,8 @@ package norg.neptunia.capability;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
 import norg.neptunia.inventory.InventoryExtended;
+import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Created by The Sea on 2016/6/12.
@@ -11,11 +11,11 @@ import norg.neptunia.inventory.InventoryExtended;
 public interface INepCapability {
     String getStatue();
     void setStatue(String newStatue);
-    NBTTagCompound saveNBTData();
-    void loadNBTData(NBTTagCompound compound);
+    NBTTagCompound saveNBTData(EntityPlayer player);
+    void loadNBTData(NBTTagCompound compound, EntityPlayer player);
     void dataChanged(EntityPlayer player);
 
-    ListCharactor getListCharactor();
+    ListCharacter getListCharacter();
     int getSuperPower(String statue);
     int getExEDriver(String statue);
     int getLevel(String statue);

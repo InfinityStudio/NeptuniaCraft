@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
-import norg.neptunia.capability.ListCharactor.*;
+import norg.neptunia.capability.ListCharacter.*;
 
 /**
  * Created by The Sea on 2016/4/30.

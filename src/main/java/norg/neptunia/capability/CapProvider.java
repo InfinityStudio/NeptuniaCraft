@@ -6,21 +6,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 /**
  * Created by The Sea on 2016/6/12.
  */
-public class CapProvider implements ICapabilityProvider, INBTSerializable {
+public class CapProvider implements ICapabilitySerializable<NBTTagCompound> {
 
     @CapabilityInject(INepCapability.class)
-    public static Capability<INepCapability> NEP_CAP = null;
-    private INepCapability nepCapability;
+    public static Capability<INepCapability> NEP_CAP;
 
-    public CapProvider() {
-        nepCapability = new NeptuniaCapability();
-    }
+    private INepCapability nepCapability = new NeptuniaCapability();
+
+    public CapProvider() { }
 
     public CapProvider(INepCapability nepCapability) {
         this.nepCapability = nepCapability;
@@ -28,12 +26,16 @@ public class CapProvider implements ICapabilityProvider, INBTSerializable {
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return NEP_CAP != null && capability == NEP_CAP;
+        return NEP_CAP.equals(capability);
     }
 
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        if (NEP_CAP != null && capability == NEP_CAP) return (T)nepCapability;
+        if (NEP_CAP.equals(capability)) {
+            @SuppressWarnings("unchecked")
+                    T result = (T) nepCapability;
+            return result;
+        }
         return null;
     }
 
@@ -42,12 +44,17 @@ public class CapProvider implements ICapabilityProvider, INBTSerializable {
     }
 
     @Override
-    public NBTBase serializeNBT() {
-        return nepCapability.saveNBTData();
+    public NBTTagCompound serializeNBT() {
+        NBTTagCompound compound = new NBTTagCompound();
+        compound.setTag("Nep!", NEP_CAP.getStorage().writeNBT(NEP_CAP, nepCapability, null));
+        return compound;
+        //return nepCapability.saveNBTData();
     }
 
     @Override
-    public void deserializeNBT(NBTBase nbt) {
-        nepCapability.loadNBTData((NBTTagCompound) nbt);
+    public void deserializeNBT(NBTTagCompound compound) {
+        NBTBase nbt = compound.getTag("Nep!");
+        NEP_CAP.getStorage().readNBT(NEP_CAP, nepCapability, null, nbt);
+        //nepCapability.loadNBTData((NBTTagCompound) nbt);
     }
 }

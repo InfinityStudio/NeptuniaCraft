@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
-import norg.neptunia.capability.ListCharactor.*;
+import norg.neptunia.capability.ListCharacter.*;
 import norg.neptunia.proxy.GuiID;
 
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class GuiSelectCharactor extends GuiScreen {
         int j = (this.height - 222) / 2;
         this.drawTexturedModalRect(i, j, 0, 0, 246, 222);
         INepCapability pc = CapProvider.get(this.player);
-        Iterator<Information> iterator = pc.getListCharactor().charactorList.iterator();
+        Iterator<Information> iterator = pc.getListCharacter().characterList.iterator();
         int k = 1;
         boolean b = false;
         while (iterator.hasNext()) {
@@ -79,35 +79,35 @@ public class GuiSelectCharactor extends GuiScreen {
         int j = (this.height - 222) / 2;
         try {
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 40 && mouseY >= j + 13 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(0).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(0).getName());
                 ps.dataChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 40 && mouseY >= j + 13 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(1).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(1).getName());
                 ps.dataChanged(this.player);
             }
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 94 && mouseY >= j + 67 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(2).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(2).getName());
                 ps.dataChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 94 && mouseY >= j + 67 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(3).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(3).getName());
                 ps.dataChanged(this.player);
             }
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 148 && mouseY >= j + 121 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(4).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(4).getName());
                 ps.dataChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 148 && mouseY >= j + 121 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(5).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(5).getName());
                 ps.dataChanged(this.player);
             }
             if (mouseX <= i + 34 && mouseX >= i + 10 && mouseY <= j + 202 && mouseY >= j + 175 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(6).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(6).getName());
                 ps.dataChanged(this.player);
             }
             if (mouseX <= i + 145 && mouseX >= i + 121 && mouseY <= j + 202 && mouseY >= j + 175 && mouseButton == 0) {
-                ps.setStatue(ps.getListCharactor().charactorList.get(7).getName());
+                ps.setStatue(ps.getListCharacter().characterList.get(7).getName());
                 ps.dataChanged(this.player);
             }
         } catch (Exception event) { }

@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import norg.neptunia.Entity.EntityLoader;
 import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.block.BlockLoader;
 import norg.neptunia.capability.INepCapability;
@@ -22,10 +23,11 @@ public class CommonProxy {
     public static SimpleNetworkWrapper network;
 
     public void preInit(FMLPreInitializationEvent event) {
-        CapabilityManager.INSTANCE.register(INepCapability.class, NeptuniaCapability.CapStorage.capStorge, NeptuniaCapability.class);
-        registerMessenger();;
+        CapabilityManager.INSTANCE.register(INepCapability.class, NeptuniaCapability.CapStorage.capStorage, NeptuniaCapability.class);
+        registerMessenger();
         new ItemLoader();
         new BlockLoader();
+        new EntityLoader();
     }
 
     public void init(FMLInitializationEvent event) {
@@ -37,7 +39,7 @@ public class CommonProxy {
 
     protected void registerMessenger() {
         int messageCount = 0;
-        network = NetworkRegistry.INSTANCE.newSimpleChannel("neptunia_messenger");
+        network = NetworkRegistry.INSTANCE.newSimpleChannel("neptunia");
         network.registerMessage(MessageUpdateCap.UpdateCapsHandler.class, MessageUpdateCap.class, messageCount++, Side.CLIENT);
     }
 }

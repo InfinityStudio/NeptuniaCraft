@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
-import norg.neptunia.capability.ListCharactor;
+import norg.neptunia.capability.ListCharacter;
 import norg.neptunia.inventory.ContainerCharacterInfo;
 import norg.neptunia.inventory.InventoryExtended;
 import norg.neptunia.proxy.GuiID;
@@ -66,9 +66,9 @@ public class GuiCharacterInfo extends GuiContainer {
         this.mc.getTextureManager().bindTexture(guiCharaInfo);
         this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, this.xSize, this.ySize);
         INepCapability pc = CapProvider.get(player);
-        Iterator<ListCharactor.Information> iterator = pc.getListCharactor().charactorList.iterator();
+        Iterator<ListCharacter.Information> iterator = pc.getListCharacter().characterList.iterator();
         while (iterator.hasNext()) {
-            ListCharactor.Information chara = iterator.next();
+            ListCharacter.Information chara = iterator.next();
             if (chara.getName().equals(pc.getStatue())) {
                 this.drawTexturedModalRect(guiLeft + 65, guiTop + 11, 0, 222, (int) (85 * player.getHealth() / player.getMaxHealth()), 16);
                 this.drawTexturedModalRect(guiLeft + 65, guiTop + 35, 85, 222, 85 * pc.getSuperPower(pc.getStatue()) / pc.getMaxSP(pc.getStatue()), 16);

@@ -19,13 +19,13 @@ import norg.neptunia.item.weapon.*;
 @Mod.EventBusSubscriber(modid = "neptunia")
 public class ItemLoader {
 
-    public static ItemBasic[] itemList = new ItemBasic[] {
+    private static ItemBasic[] itemList = new ItemBasic[] {
             new ItemDisc(), new ItemIdeaChipB(), new ItemIdeaChipR(), new ItemIdeaChipY()
     };
 
-    public static ItemBasic[] weaponList = new ItemBasic[] {
+    private static ItemBasic[] weaponList = new ItemBasic[] {
             new ItemSwordNeptune(), new ItemKnifeNoire(), new ItemAxeBlanc(), new ItemGunVert(),
-            new ItemSwordNepgear()
+            new ItemWandNepgear()
     };
 
     public ItemLoader() { }

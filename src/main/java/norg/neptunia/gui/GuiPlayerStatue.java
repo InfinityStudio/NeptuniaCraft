@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
-import norg.neptunia.capability.ListCharactor.*;
+import norg.neptunia.capability.ListCharacter.*;
 
 import java.util.Iterator;
 
@@ -32,7 +32,7 @@ public class GuiPlayerStatue extends Gui{
         this.drawTexturedModalRect(55, 29, 0, 55, (68 * pc.getSuperPower(pc.getStatue()) / pc.getMaxSP(pc.getStatue())), 6);
         int exeAccess = 40*pc.getExEDriver(pc.getStatue())/pc.getMaxExEDriver(pc.getStatue());
         this.drawTexturedModalRect(1, 41-exeAccess, 0, 61, 3, exeAccess);
-        Iterator<Information> iterator = pc.getListCharactor().charactorList.iterator();
+        Iterator<Information> iterator = pc.getListCharacter().characterList.iterator();
         while (iterator.hasNext()) {
             Information chara = iterator.next();
             if (chara.getName().equals(pc.getStatue())) {
