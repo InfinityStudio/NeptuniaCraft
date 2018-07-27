@@ -61,18 +61,6 @@ public class NeptuniaCapability implements INepCapability {
         }
     }
 
-    /*@Override
-    public void dataChanged(EntityPlayerMP player) {
-        if (player.hasCapability(CapProvider.NEP_CAP, null)) {
-            MessageUpdateCap message = new MessageUpdateCap();
-            INepCapability nepCapability = player.getCapability(CapProvider.NEP_CAP, null);
-            Capability.IStorage<INepCapability> storage = CapProvider.NEP_CAP.getStorage();
-            message.props = new NBTTagCompound();
-            message.props.setTag("Nep!", storage.writeNBT(CapProvider.NEP_CAP, nepCapability, null));
-            CommonProxy.network.sendTo(message, player);
-        }
-    }*/
-
     @Override
     public ListCharacter getListCharacter() {
         return listCharacter;

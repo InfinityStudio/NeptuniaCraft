@@ -1,11 +1,14 @@
-package norg.neptunia.Entity;
+package norg.neptunia.entity;
 
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraft.entity.Entity;
+import norg.neptunia.capability.CapProvider;
+import norg.neptunia.capability.INepCapability;
 
 public class EntityMagicBall extends EntityThrowable {
 
@@ -31,11 +34,19 @@ public class EntityMagicBall extends EntityThrowable {
 
     @Override
     protected void onImpact(RayTraceResult result) {
+        if (result.entityHit instanceof EntityMagicCircle) return;
         if (result.entityHit != null) {
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), this.damage);
+            if (!this.world.isRemote && this.thrower instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) this.thrower;
+                if (result.entityHit instanceof EntityLiving) {
+                    INepCapability pc = CapProvider.get(player);
+                    pc.setSuperPower(pc.getStatue(), pc.getSuperPower(pc.getStatue()) + 1);
+                    pc.dataChanged(player);
+                }
+            }
         }
         if (!this.world.isRemote) {
-            //this.world.setEntityState(this, (byte)3);
             this.setDead();
         }
     }

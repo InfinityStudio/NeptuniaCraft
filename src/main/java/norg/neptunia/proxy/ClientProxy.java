@@ -5,6 +5,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import norg.neptunia.block.BlockLoader;
+import norg.neptunia.entity.EntityRenderLoader;
 import norg.neptunia.item.ItemLoader;
 
 /**
@@ -16,6 +17,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
         ClientRegistry.registerKeyBinding(EventHandler.keyShowSC);
+        new EntityRenderLoader();
     }
 
     @Override

@@ -48,13 +48,11 @@ public class CapProvider implements ICapabilitySerializable<NBTTagCompound> {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setTag("Nep!", NEP_CAP.getStorage().writeNBT(NEP_CAP, nepCapability, null));
         return compound;
-        //return nepCapability.saveNBTData();
     }
 
     @Override
     public void deserializeNBT(NBTTagCompound compound) {
         NBTBase nbt = compound.getTag("Nep!");
         NEP_CAP.getStorage().readNBT(NEP_CAP, nepCapability, null, nbt);
-        //nepCapability.loadNBTData((NBTTagCompound) nbt);
     }
 }

@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import norg.neptunia.Entity.EntityLoader;
+import norg.neptunia.entity.EntityLoader;
 import norg.neptunia.NeptuniaCraft;
 import norg.neptunia.block.BlockLoader;
 import norg.neptunia.capability.INepCapability;

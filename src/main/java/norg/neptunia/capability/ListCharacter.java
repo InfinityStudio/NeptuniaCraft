@@ -77,13 +77,9 @@ public class ListCharacter {
 
         public InventoryExtended getInventory() { return this.inventory; }
 
-        public void setSuperPower(int superPower) {
-            this.superPower = superPower;
-        }
+        public void setSuperPower(int superPower) { this.superPower = superPower; }
 
-        public void setExeDriver(int exeDriver) {
-            this.exeDriver = exeDriver;
-        }
+        public void setExeDriver(int exeDriver) { this.exeDriver = exeDriver; }
 
         public void setExp(int exp) {
             this.exp = exp;

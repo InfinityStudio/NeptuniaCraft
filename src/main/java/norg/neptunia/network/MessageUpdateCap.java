@@ -54,13 +54,6 @@ public class MessageUpdateCap implements IMessage {
                     }
                 });
             }
-            /*IThreadListener mainThread = (ctx.side.isClient())? Minecraft.getMinecraft() : (WorldServer) ctx.getServerHandler().player.world;
-            mainThread.addScheduledTask(new Runnable() {
-                @Override
-                public void run() {
-                    CapProvider.get(Minecraft.getMinecraft().player).loadNBTData(message.props);
-                }
-            });*/
             return null;
         }
     }

@@ -105,11 +105,6 @@ public class EventHandler {
         if (event.getEntity() instanceof EntityPlayerMP && !event.getEntity().getEntityWorld().isRemote) {
             CapProvider.get((EntityPlayerMP) event.getEntity()).dataChanged((EntityPlayerMP) event.getEntity());
         }
-        /*if (!event.getWorld().isRemote && event.getEntity() instanceof EntityPlayer) {
-            EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
-            INepCapability nepCapability = new NeptuniaCapability();
-            nepCapability.dataChanged(player);
-        }*/
     }
 
     @SubscribeEvent
