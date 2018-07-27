@@ -22,7 +22,7 @@ public class EntityMagicCircle extends Entity {
     @Override
     public void onEntityUpdate() {
         super.onEntityUpdate();
-        if (this.ticksExisted > 40) this.setDead();
+        if (this.ticksExisted > 20) this.setDead();
     }
 
     @Override
