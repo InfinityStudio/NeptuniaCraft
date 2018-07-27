@@ -1,14 +1,23 @@
 package norg.neptunia.entity;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntityMagicCircle extends EntityLiving {
+public class EntityMagicCircle extends Entity {
 
-    public EntityMagicCircle(World worldIn) {
-        super(worldIn);
+    public EntityMagicCircle(World world) {
+        super(world);
     }
+
+    public EntityMagicCircle(World worldIn, double x, double y, double z, float yaw, float pitch) {
+        super(worldIn);
+        setPosition(x, y, z);
+        setRotation(yaw, pitch);
+    }
+
+    @Override
+    protected void entityInit() { }
 
     @Override
     public void onEntityUpdate() {
@@ -17,18 +26,13 @@ public class EntityMagicCircle extends EntityLiving {
     }
 
     @Override
-    public boolean hasNoGravity() {
-        return true;
+    protected void readEntityFromNBT(NBTTagCompound compound) {
+
     }
 
     @Override
-    public boolean hitByEntity(Entity entityIn) {
-        return true;
-    }
+    protected void writeEntityToNBT(NBTTagCompound compound) {
 
-    @Override
-    public boolean attackable() {
-        return false;
     }
 
 }

@@ -28,9 +28,9 @@ public class ItemWandNepgear extends ItemBasic {
                 EntityMagicBall entityMagicBall = new EntityMagicBall(worldIn, playerIn, 10.0F);
                 entityMagicBall.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 0.0F);
                 worldIn.spawnEntity(entityMagicBall);
-                EntityMagicCircle entityMagicCircle = new EntityMagicCircle(worldIn);
-                entityMagicCircle.setRotationYawHead(playerIn.rotationYawHead);
-                entityMagicCircle.setPositionAndUpdate(playerIn.posX, playerIn.posY, playerIn.posZ);
+                EntityMagicCircle entityMagicCircle = new EntityMagicCircle(worldIn, playerIn.posX-1.5*MathHelper.sin((180-playerIn.rotationYaw)*0.017453292F),
+                        playerIn.posY+playerIn.getEyeHeight(), playerIn.posZ-1.5*MathHelper.cos((180-playerIn.rotationYaw)*0.017453292F),
+                        playerIn.rotationYaw, playerIn.rotationPitch);
                 worldIn.spawnEntity(entityMagicCircle);
             }
         }
