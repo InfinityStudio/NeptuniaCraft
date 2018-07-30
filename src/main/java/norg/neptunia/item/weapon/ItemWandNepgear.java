@@ -12,6 +12,7 @@ import norg.neptunia.entity.EntityMagicBall;
 import norg.neptunia.entity.EntityMagicCircle;
 import norg.neptunia.capability.CapProvider;
 import norg.neptunia.capability.INepCapability;
+import norg.neptunia.entity.EntityMagicCircleFriend;
 import norg.neptunia.item.ItemBasic;
 
 public class ItemWandNepgear extends ItemBasic {
@@ -54,6 +55,8 @@ public class ItemWandNepgear extends ItemBasic {
                         playerIn.posY+playerIn.getEyeHeight(), playerIn.posZ-1.5*MathHelper.cos((180-playerIn.rotationYaw)*0.017453292F),
                         playerIn.rotationYaw, playerIn.rotationPitch);
                 worldIn.spawnEntity(entityMagicCircle);
+                EntityMagicCircleFriend entityMagicCircleFriend = new EntityMagicCircleFriend(worldIn, playerIn.posX, playerIn.posY+0.01, playerIn.posZ, 0, 0);
+                worldIn.spawnEntity(entityMagicCircleFriend);
             }
         }
         return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
